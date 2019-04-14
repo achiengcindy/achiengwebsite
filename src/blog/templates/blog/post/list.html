@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+{% load blog_tags %}
+{% load staticfiles %}
+{% block title %}{{post.title}}{% endblock %}
+{% block content %}
+
+
+
+<div class="container masonry topspace">
+        {% for post in posts %}
+        <article class="brick">
+                {% include 'tags/list_thumbnail.html' %}
+        
+            <div class="edgtf-post-text">
+                <div class="edgtf-post-text-inner">
+                    <h3 class="edgtf-post-title">
+                        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
+                    </h3>
+                            <p class="edgtf-post-excerpt">{{post.body|markdown|truncatewords_html:25 }}</p>
+                            <footer class="post-meta">
+                                    <div class="edgtf-post-info-bottom-left">
+                                        <div class="category">
+                                            <a href="{{post.category.get_absolute_url}}"  rel="category tag">{{post.category}}</a>
+                                        </div>
+                                    </div>
+                                    <div class="edgtf-post-info-bottom-right">
+                                            <a href="{{post.get_permalink_url}}"  class="btn-read-more"> <span class="edgtf-btn-text">Read More</span> </a>
+                                    </div>
+                            </footer>
+                          
+                    </div>
+                 
+            
+        </article>
+        {% endfor %}
+
+</div>
+ 
+{% include "tags/paginator.html" with page=posts %}
+{% endblock %}
+
+
+
+
+

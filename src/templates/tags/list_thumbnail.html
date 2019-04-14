@@ -1,0 +1,14 @@
+{% load thumbnail %}
+{% with '{{ post.image.url }}' as source %}
+
+<img src="{% thumbnail post.image '500' as im %} {{ im.url }}{% endthumbnail %}"
+srcset="
+        {% thumbnail post.image '500'  as im %}{{ im.url }} {{ im.x }}w{% endthumbnail %},
+        {% thumbnail post.image '1000'  as im %}{{ im.url }} {{ im.x }}w{% endthumbnail %},
+        {% thumbnail post.image '1500'  as im %}{{ im.url }} {{ im.x }}w{% endthumbnail %}"
+alt="{{ post.caption }}"
+sizes=" (min-width: 768px) 50vw,(min-width: 992px) 33vw, 100vw" />
+{% endwith %}
+
+
+<!-- https://micropyramid.com/blog/how-to-create-responsive-thumbnails-in-django-templates-using-sorl-thumbnail/ -->
