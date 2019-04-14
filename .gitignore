@@ -1,0 +1,17 @@
+#ignore all Python files
+*.pyc
+*.log
+settings.py
+db.sqlite3
+.DS_Store
+
+
+# Distribution / packaging
+build/
+dist/
+
+
+# Environments
+.env
+src/mysite/settings\.py
+
