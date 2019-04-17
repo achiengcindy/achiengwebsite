@@ -6,11 +6,11 @@
 
 <header id="main-header" role="banner">
 <a class="header__logo" href="/">Achieng<span style="color:#AEC33A;">Cindy</span></a>
-                        <div id="menu" class="header__menu" onclick="myFunction(this)" role="navigation">
-                                        <div class="bar1"></div>
-                                        <div class="bar2"></div>
-                                        <div class="bar3"></div>
-                                      </div>
+<div id="menu" class="header__menu" onclick="myFunction(this)" tabindex="0">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
                             
                                         
                                 <nav id="drawer" class="nav main__nav" role="navigation">
@@ -37,7 +37,7 @@
                                 </nav>
                             
                             <ul class="header-icons">
-                                    <li class="header-account dis-block">
+                                    <li class="header-account dis-block" tabindex="0">
                                         <img src="{% static 'images/iconfinder_profile.svg' %}" class="basket">
                                    
                                      <ul class="dropdown">
@@ -46,7 +46,7 @@
                                             
                                         </ul>
                                     </li>
-                                    <li class="cart-header dis-block">
+                                    <li class="cart-header dis-block" tabindex="0">
                                             <img src="{% static 'images/iconfinder_meanicons.svg' %}" class="basket">
                                       
                                             <span id="checkout_items" class="checkout_items">

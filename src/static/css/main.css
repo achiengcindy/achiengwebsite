@@ -224,18 +224,35 @@ main{
 h1.desc{
 	position: relative;
 	animation: heading;
+	-webkit-animation:heading;
+	-moz-animation:heading;
 	animation-duration: 2s;
 	animation-fill-mode: forwards;
 }
 /* The animation code */
 @keyframes heading{
 	0% {
-	   top: -50px;
+		opacity:0;
+		transform:translate(0,30%)
    }
 	100% {
-	   top: 40px;
-   }
+		opacity:1;
+		transform:translate(0,0)
 }
+   
+}
+
+@-webkit-keyframes heading {
+	0% {
+		opacity:0;
+	transform:translate(0,30%)
+ }
+100% {
+	opacity:1;
+	transform:translate(0,0)
+}
+}
+
 /* ====================== header ====================== */
 #main-header {
 	width: 100%;
@@ -352,6 +369,12 @@ h1.desc{
 	width: 100%;
 	padding: 0 3em;
 }
+/* .mentor .elements-item-inner:hover{
+	-webkit-transform: translateX(-10%);
+	-moz-transform: translateY(-10%);
+	transform: translateY(-10%) 
+} */
+
 .gallery{
 	background-color: #253F58;
 }
@@ -406,13 +429,13 @@ ul.partners-section li {
 	-moz-transform: translateY(-100%);
 	transform: translateY(-100%) 
 }
-.image-inner:hover .client-image {
+.client-hover-image, .client-image {
 	-webkit-transition: all .35s cubic-bezier(.69, -.04, .54, .99);
 	-moz-transition: all .35s cubic-bezier(.69, -.04, .54, .99);
 	transition: all .35s cubic-bezier(.69, -.04, .54, .99) 
 }
 
-.image-inner:hover:hover .client-hover-image {
+.image-inner:hover .client-hover-image {
 	opacity: 1;
 	-webkit-transform: translateY(0);
 	-moz-transform: translateY(0);
@@ -658,6 +681,7 @@ ul.post-social li {
 @media only screen and (max-width: 767px) {
 
 	.header__menu {
+		display: block;
 	    position: absolute;
 		padding: 1.4em 1.4em;
     	right: 0;
@@ -665,7 +689,7 @@ ul.post-social li {
     	top: 0;
 	   }
 	   .header-icons {
-		right: 10em;
+			left: 3em;
 	}
 	.menu-item{
 		display: list-item;
@@ -739,7 +763,10 @@ ul.post-social li {
 @media only screen and (min-width: 768px) {
 	.container {
 		max-width: 740px;
-   }
+	 }
+	 .header__menu {
+		display: none;
+	 }
 
 .menu-list {
 	display: flex;
@@ -819,9 +846,6 @@ ul.post-social li {
 
 /* ====================== max-width of 350 ====================== */
 @media only screen and (max-width: 400px) {
-	.header-icons {
-	 right: 7em;
- }
  .notfound .notfound-404 {
 	position: relative;
 	height: 168px;

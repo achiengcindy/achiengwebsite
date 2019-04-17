@@ -56,7 +56,6 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    meta_keywords = models.CharField(max_length=255,help_text='Comma-delimited set of SEO keywords for meta tag')
     meta_description = models.CharField(max_length=255, help_text='Content for description meta tag')
     objects = models.Manager() # The default manager.
     published = PublishedManager() # The Dahl-specific manager.

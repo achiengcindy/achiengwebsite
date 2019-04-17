@@ -48,13 +48,12 @@ def post_list(request, tag_slug=None):
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,status='published',publish__year=year,publish__month=month, publish__day=day)
     categories = post.categories.filter(is_active=True)
-    meta_keywords = post.meta_keywords
     meta_description = post.meta_description
     # List of similar posts
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
-    context={'post': post, 'categories':categories,'similar_posts': similar_posts,'meta_url':post.get_absolute_url,'meta_image':post.image.url,'meta_title':post.title, 'meta_keywords': meta_keywords, ' meta_description':meta_description}
+    context={'post': post, 'categories':categories,'similar_posts': similar_posts,'meta_url':post.get_absolute_url,'meta_image':post.image.url,'meta_title':post.title, 'meta_description':meta_description}
     return render(request, 'blog/post/detail.html', context)
 
 def post_edit(request, id):
