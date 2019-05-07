@@ -9,6 +9,7 @@ db.sqlite3
 # Distribution / packaging
 build/
 dist/
+node_modules
 
 
 # Environments
