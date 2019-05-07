@@ -4,6 +4,7 @@
 settings.py
 db.sqlite3
 .DS_Store
+*.json
 
 
 # Distribution / packaging
