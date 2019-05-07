@@ -2,39 +2,41 @@
 {% extends "base.html" %}
 {% load blog_tags %}
 {% load staticfiles %}
-{% block title %} Blog {% endblock %}
+{% block title %} Blog Achieng Cindy{% endblock %}
 {% block content %}
-
-<div class="container masonry topspace">
+<section class="container">
+    <div class="masonry topspace">
         {% for post in posts %}
         <article class="brick">
-                {% include 'tags/list_thumbnail.html' %}
-        
-            <div class="edgtf-post-text">
-                <div class="edgtf-post-text-inner">
-                    <h3 class="edgtf-post-title">
-                        <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
-                    </h3>
-                            <p class="edgtf-post-excerpt">{{post.body|markdown|truncatewords_html:25 }}</p>
-                            <footer class="post-meta">
-                                    <div class="edgtf-post-info-bottom-left">
-                                        <div class="category">
-                                            <a href="{{post.category.get_absolute_url}}"  rel="category tag">{{post.category}}</a>
+                <figure class="">
+                    {% include "tags/list_thumbnail.html" %}
+                    <figcaption class="single-caption text-center">
+                        Image By {% if post.credit %}{{ post.credit }} {% else%}
+                                <a href="https://achiengcindy.com">Cindy</a>{% endif %}
+                    </figcaption>
+                </figure>
+                <div class="edgtf-post-text">
+                    <div class="edgtf-post-text-inner">
+                        <h3 class="edgtf-post-title">
+                            <a href="{{post.get_absolute_url}}" style="letter-spacing: 0">{{ post.title }}</a>
+                        </h3>
+                            {{post.body|markdown|truncatewords_html:25 }}
+                                <div class="post-meta">
+                                        <div class="post-bottom-left">
+                                            <div class="category">
+                                                <a href="{{category.get_absolute_url}}"  rel="category tag">{{post.category}}</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="edgtf-post-info-bottom-right">
-                                            <a href="{{post.get_permalink_url}}"  class="btn-read-more"> <span class="edgtf-btn-text">Read More</span> </a>
-                                    </div>
-                            </footer>
-                          
-                    </div>
-                 
-            
+                                        <div class="post-bottom-right">
+                                                <a href="{{post.get_permalink_url}}"  class="btn-read-more"> <span class="edgtf-btn-text">Read More</span> </a>
+                                        </div>
+                                </div>  
+                    </div>     
         </article>
-        {% endfor %}
+            {% endfor %}
+    </div>
+</section>
 
-</div>
- 
 {% include "tags/paginator.html" with page=posts %}
 {% endblock %}
 

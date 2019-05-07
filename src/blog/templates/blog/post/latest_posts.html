@@ -1,8 +1,9 @@
 {% load blog_tags %}
 
-<div class="row">
+<div class="container">
+    <di class="row">
         {% for post in latest_posts %}
-    <div class="column col-sm-6 col-md-4">
+    <div class="column column-2 column-3">
         <h3 class="text-center">
             <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         </h3>
@@ -10,4 +11,4 @@
     </div>
     {% endfor %}
 </div>
-
+</div>

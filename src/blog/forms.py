@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post
+from .models import Post, Comment
 from tinymce.widgets import TinyMCE
 
 class EmailPostForm(forms.Form):
@@ -19,5 +19,11 @@ class PostForm(forms.ModelForm):
 
         # widget = {'body': forms.CharField(widget=TinyMCE(attrs={'cols': 80,'rows': 30}))}
 
-    
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('website','body',)
+        labels = {'body': ''}
+        widgets = {'body': forms.Textarea(attrs={'cols': 80})}
+
 
