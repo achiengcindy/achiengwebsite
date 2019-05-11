@@ -1,21 +1,37 @@
 {% extends "base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-<div class="detail_post column col-3 ">
-    <section class="">
-        <article class="">
-            <header id="">
+<section class="row">
+<div class="detail-post column col-3 elements-item-inner">
+        <article class="single-post">
+            <header id="entry-header">
                     <h1>{{ post.title }}</h1>
-                    <time class="date">
-                    Published {{ post.publish }} by {{ post.author }}
-                    </time>
+                    <span>
+                            <a href="https://achiengcindy.com" rel="bookmark">
+                                <time class="entry-date date">{{ post.publish }}</time>
+                                <time class="updated date">April 16, 2019, 4:27 p.m.</time>
+                            </a>
+                    </span>
+                    <span class="author vcard"><a class="url fn n" href="https://achiengcindy.com/aboutcindy/">{{ post.author }}</a></span>
+                    <span class="cat-links">
+                            <i class="fa fa-folder-open"></i>
+                            <a href="https://achiengcindy.com/" rel="category tag">
+                                In category:
+                                
+                                </a><a href="/blog/tutorial-series/">Tutorial Series</a>
+                                
+                                
+                            
+                        </span>
+                
+ 
             </header>
-            <div class="">   {{ post.body|linebreaks }}</div>
-            <footer></footer>
+            <div id="post-excerpt">   {{ post.body|linebreaks }}</div>
+            <footer id="post-meta"></footer>
         </article>
-    </section>
     <section class="comments"></section>
     </div>
-<aside class="sidebar col-4"></aside>
+<aside class="sidebar column col-4"></aside>
+</section>
 
 {% endblock %}

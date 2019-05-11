@@ -32,7 +32,7 @@ a:hover {
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Montserrat";
-	font-weight: 700;
+    font-weight: 700;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     color: inherit;
@@ -53,6 +53,7 @@ input {
 	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
 	border: 1px solid #d5d5d5;
 }
+#id_message{width: 100%;}
  .row{
     width: 100%;
         display: flex;
@@ -61,17 +62,59 @@ input {
 	flex-wrap: wrap;
    
 } 
+.mb {margin-bottom: 2.5em;}
+.pt {padding-top: 2.5em;}
+.pb {padding-bottom: 3em;}
+.text-center {text-align: center;}
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.edgtf-separator {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	border-bottom: 3px solid #fEC748;
+	width: 79px;
+}
+
+.elements-item-inner {
+    width: 100%; 
+    padding: 0 1em;  
+}
+
+.column,.detail-post{width: 100%;}
+
+#post-meta{
+    display: table;
+    width: 100%;
+    margin-bottom: 0;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+#post-meta .post-bottom-left, #post-meta .post-bottom-right {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+@media only screen and (max-width: 600px){
+    
+}
 
 @media only screen and (min-width: 601px){
-    .detail_post {
+    .detail-post {
         float: left;
     }
     .sidebar{float: right}
     .col-2{width:50%}
-  
+    .single-post{ margin: 0 2em;}
+
 }
 
 @media only screen and (min-width: 768px){
     .col-3{width:75%}
     .col-4{width:25%}
+}
+@media only screen and (min-width: 992px){
+    .single-post{ margin: 0 4em;}
 }
