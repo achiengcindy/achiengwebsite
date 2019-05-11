@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Cindy Achieng Blog{% endblock %}
 {% block content %}
-{% for post in posts %}
-<article class="column col-2 col-3 elements-item-inner">
+
+<section class=" elements-item-inner">
+        {% for post in posts %}
+<article class="masonry">
         <header id="entry-header">
                 <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                 <figure class="">
@@ -17,7 +19,9 @@
                                         </figure>
                 <time class="date">Published {{ post.publish }} by {{ post.author }}</time>
         </header>
-        <div id="post-excerpt"> {{ post.body|truncatewords:30|linebreaks }}</div>
+        <div id="post-excerpt"> {{ post.body|truncatewords:30|linebreaks }}
+            
+        </div>
             <footer id="post-meta">
                   
                             <div class="post-bottom-left text-left">
@@ -30,7 +34,10 @@
                             </div>
             </footer>
 </article>
-
 {% endfor %}
+{% include "tags/pagination.html" with page=posts %}
+</section>
 
 {% endblock %}
+
+

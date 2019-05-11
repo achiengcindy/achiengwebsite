@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Create an account{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+			<div class="signup-form">
+					<h2>Create an account</h2>
+					{% if error_message %}
+					<ul class="errorlist">
+							<li>{{ error_message }}</li>
+					</ul>
+					{% endif %}
+					<form action="." method="post">{% csrf_token %}
+						<p class="hint-text">Create your account. It's free and only takes a minute.</p>
+						{{ user_form.as_p }} 
+							<button type="submit" class="btn btn-block" id="reg-button">Register Now</button>
+					</form>
+					 <div class="text-center signup">
+						<span class="txt1">Already have an account?</span>
+						<a class="txt2" href="{% url 'login' %}">Sign in</a></a>		
+					</div>
+				</div>
+
+	</div>
+</div>
+
+	
+{% endblock %}
+
+<script>
+		var regPassword = document.getElementById('id_password');
+		var regButton = document.getElementById('reg-button');
+		
+		loginPassword.addEventListener('input', function(e){
+		  if(e.target.value.length >= 5 && e.target.value.length <=12){
+			loginButton.removeAttribute('disabled');
+		  }
+		  else{
+			  loginButton.removeAttribute('disabled', 'true');
+		
+			}
+		
+		}); 
+			</script> 
+
+
+
