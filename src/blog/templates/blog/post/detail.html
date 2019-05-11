@@ -1,194 +1,21 @@
-{% extends "base.html" %} 
-{% load blog_tags %} 
-{% load staticfiles %} 
-{% block title %}{{post.title}}{% endblock %} 
+{% extends "base.html" %}
+{% block title %}{{ post.title }}{% endblock %}
 {% block content %}
-
-
-
-
-
-
-
-
-<div class="container topspace">
-    <div class="row">
-        <div class="detail_post column col-md-8">
-                <article class="mb single-post">
-                        
-                   
-                        <div class="inner-content mb">
-                        <header class="entry-header">
-                        
-                                <h2 class="post-title" style="letter-spacing: 0">{{post.title}}</h2>
-                    
-                                <div class="entry-meta mb">
-                                    <span class="posted-on">
-                                                                                <i class="fa fa-calendar-alt"></i>
-                                                                                <a href="https://achiengcindy.com" rel="bookmark">
-                                                                                    <time class="entry-date time">{{ post.publish }}</time>
-                                                                                    <time class="updated time ">{{ post.updated }}</time>
-                                                                                </a>
-                                                                            </span>
-                                    <span class="byline">
-                                                                                <i class="fa fa-user"></i> 
-                                                                                <span class="author vcard"><a class="url fn n" href="https://achiengcindy.com/aboutme/">{{ post.author }}</a></span>
-                                    </span>
-                                    <span class="cat-links">
-                                                                                <i class="fa fa-folder-open"></i>
-                                                                                <a href="https://achiengcindy.com/" rel="category tag">
-                                                                                    In categor{{ categories.count|pluralize:"y,ies" }}:
-                                                                                    {% for c in categories %}
-                                                                                    <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
-                                                                                    {% if not forloop.last %}, {% endif %}
-                                                                                    {% endfor %}
-                                                                                </a>
-                                                                            </span>
-                                </div>
-                    
-                            </header>
-                      
-                            
-                            <div class="post-excerpt mb">{{ post.body|markdown }}</div>
-                    
-                            <div class="post-meta mb">
-                    
-                                <ul class="post-social share social-buttons mb" style="padding:0;">
-                                    <li>
-                                        <a style="background-color : #f26522;" target="_blank" class='share-email' href="mailto:?subject={{post.title|urlencode}}&body=http://achiengcindy.com{{post.get_absolute_url|urlencode}}">
-                                            <i class="fa fa-envelope"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a style="background-color : rgb(66, 101, 185)" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://achiengcindy.com{{post.get_absolute_url|urlencode}}">
-                                            <i class="fab fa-facebook"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a style="background-color : rgb(85, 172, 238)" target="_blank" href="https://twitter.com/home?url={{post.get_absolute_url|urlencode}}&text={{post.title|urlencode}}&via=achiengcindy.com" class="share-twitter"><i class="fab fa-twitter"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a style="background-color: rgb(76, 174, 227)" target="_blank" href="http://www.linkedin.com/shareArticle?url=http://achiengcindy.com{{post.get_absolute_url|urlencode}}&title={{post.title|urlencode}}&summary={{title}}&source=achiengcindy.com">
-                                            <i class="fab fa-linkedin"></i> </a>
-                                    </li>
-                    
-                                </ul>
-                    
-                                <div class="tag-links mb">
-                                    Tags: {% for tag in post.tags.all %}
-                                    <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }}</a> {% if notforloop.last %}, {% endif %}{% endfor %}
-                                </div>
-                            </div>
-                    
-                            <!-- Author bio -->
-                            <div class="author-bio pt">
-                                <div class='avatar'>
-                                    <img src="{% static 'images/cindym400x400.jpg' %}" alt="cindy achieng">
-                    
-                                </div>
-                    
-                                <div class="author-description mb">
-                                    <h4 class="author-name" style="font-size:1.2em;"><a href="https://achiengcindy.com" alt="{{ post.author }}">{{ post.author }}</a></h4> 
-                                    <p>I am a Django developer and Co-founder of Oark Limited based in Nairobi Kenya.I love to share my coding journey with the world with the aim to teach ,learn and inspire.I speak and host tech events.Away from programming, i like to spend time with my dog Tess.</p>
-                                </div>
-                            </div>
-                            <!--.author-bio-->
-                    
-                        </div>
-                    
-                    </article>
-
-            <section class="related_posts">
-                <h3>Related Articles</h3>
-                <!--https://unicode-table.com/en/sets/emoji/-->
-                <ul class="row">
-                    {% for post in similar_posts %}
-                    <li class="column column-2 column-3">
-                        <article class="related-article">
-                            {% include 'tags/list_thumbnail.html' %}
-                            <a href="{{post.get_absolute_url}}" class="article-related-link">
-                                <h4 class="related-post-title">{{post.title}}</h4>
-                            </a>
-                        </article>
-                    </li>
-                    {% empty %} No Related post ☹ ,definately Check again soon! {% endfor %}
-                </ul>
-            </section>
-            <!-- /.related_posts -->
-            <section class="comment-area">
-                <!-- Comments Form --> 
-                {% with comments.count as total_comments %}
-                <h3 class="comments-title">{{total_comments}} comment {{total_comments|pluralize:"s"}}</h3>
-                {% endwith %}
-
-
-
-
-        
-<h2>Add a new comment</h2>
-<form action="." method="post">
-    {{ comment_form.as_p }}
-    {% csrf_token %}
-    <button type="submit">Add comment</button>
-</form>
-
-<!-- Comment with nested comments -->
-{% for comment in comments %}
-    <div class="comment" style="background-color: powderblue">
-        <p class="info">{{ comment.commenter}} | {{ comment.created }}</p>
-            {{ comment.body|linebreaks }}
-
-        {% for reply in comment.replies.all %}
-            <p class="info">{{ reply.name }} | {{ reply.created }}</p>
-            <li>{{ reply.body }}</li>
-        {% endfor %}
-
-        <h5>Reply</h5>
-        <form action="." method="post">
-            {{ comment_form.as_p }}
-            {% csrf_token %}
-            <!-- Hidden input for parent comment.id -->
-            <input type="hidden" name="parent_id" value="{{ comment.id }}">
-            <input class="btn btn-primary" type="submit" value="Reply">
-        </form>
+<div class="detail_post column col-3 ">
+    <section class="">
+        <article class="">
+            <header id="">
+                    <h1>{{ post.title }}</h1>
+                    <time class="date">
+                    Published {{ post.publish }} by {{ post.author }}
+                    </time>
+            </header>
+            <div class="">   {{ post.body|linebreaks }}</div>
+            <footer></footer>
+        </article>
+    </section>
+    <section class="comments"></section>
     </div>
-{% empty %}
-<h4>There are no comments yet.</h4>
-{% endfor %}
-            </section>
-
-            <section class="comments-area">
-                <div id="disqus_thread"></div>
-                <script>
-                    /**
-                     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-                    var disqus_config = function() {
-                        this.page.url = "https://achiengcindy.com/{{post.get_absolute_url}}"; // Replace PAGE_URL with your page's canonical URL variable
-                        this.page.identifier = "{{post.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                    };
-
-                    (function() { // DON'T EDIT BELOW THIS LINE
-                        var d = document,
-                            s = d.createElement('script');
-                        s.src = 'https://achiengcindy.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
-                                    powered by Disqus.</a></noscript>
-
-                </section>
-        </div>
-        <aside class="sidebar colum column-3">
-            <div class="card">
-                    <a href="https://www.mochahost.com/6882-47-1-246.html" target="_blank"><img border="0" src="https://www.mochasupport.com/aff/banners/120x600_mgreen.gif" width="120" height="600"></a>
-            </div>
-
-        </aside>
-        
-    </div>
-    {% include "marketing/google_analytics.html" %}
-</div>
+<aside class="sidebar col-4"></aside>
 
 {% endblock %}

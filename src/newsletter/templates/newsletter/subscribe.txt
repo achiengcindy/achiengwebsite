@@ -1,7 +1,0 @@
-Hello {{name}}
-
-Welcome to AchiengCindyBlog Newsletter. 
-
-Thank you for signing up. 
-
-You will find the most exciting news about Python, Django,Programming tips and web development tools that will go along way to see you grow
