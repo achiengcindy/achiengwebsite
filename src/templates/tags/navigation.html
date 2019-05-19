@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<header id="main-header">
+        <div class=" wrapper">
+        <div class="header__menu">
+            <a class="header__logo" href="/"><img src="{% static 'images/Cindyredlogo.jpeg' %}" style="height:65px;"></a>
+            <div id="menu" onclick="myFunction(this)" role="button">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+            </div>
+        </div>
+        <nav id="drawer" class="nav main__nav" role="navigation">
+                <ul class="menu-list">
+                    
+                        {% url 'post_list' as Blog %}
+                      
+                        <li class="menu-item">
+                                <a {% if request.path == 'home' %} class="active" {% endif %} href="/">Home</a>
+                        </li>
+                    <li class="menu-item">
+                            <a {% if request.path == 'blog' %} class="active" {% endif %} href="{% url 'blog:post_list' %}">Blog</a>
+                    </li>
+                    <li class="menu-item">
+                            <a {% if request.path == 'about' %} class="active" {% endif %} href="/aboutcindy/">About Cindy</a>
+                    </li>
+                    <li class="menu-item">
+                        <a {% if request.path == 'contact' %} class="active" {% endif %} href="{% url 'contact' %}">Contact</a>
+                </li>
+
+                    
+                </ul>
+        </nav>
+        <ul class="header-icons wrapper">
+                <li class="header-account" tabindex="0">
+                        <img src="{% static 'profile.svg' %}" alt="image of someones heade" class="basket">
+        
+                 <ul class="dropdown">
+                        <li><a href="{% url 'login' %}">login</a></li>
+                        <li><a href="{% url 'register' %}">signup</a></li>
+                        
+                    </ul>
+                </li>
+                <li class="cart-header" tabindex="0">
+                        <img src="{% static 'minbasket.svg' %}" alt="image of an open shopping basket" class="basket">
+                  
+                        <span id="checkout_items" class=" row checkout_items">
+                               <a href=""></a>
+                       </span> 
+                        <ul class="dropdown">
+                           <li><a href="">cart amount</a></li>
+                           <li><a href="">cart</a></li> 
+                       </ul>
+                </li>
+            </ul>
+        </div>
+</header>
+

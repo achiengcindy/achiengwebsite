@@ -5,34 +5,51 @@
 
 
 {% block content %}
-<article class="row">
-<div class="detail-post column col-3 elements-item-inner">
-        <section class="single-post">
+<article class="row topspace elements-item-inner">
+<div class="detail-post column col-5">
+        <section>
             <header id="entry-header">
-                    <h1>{{ post.title }}</h1>
+                    <h2>{{ post.title }}</h2>
+                    <figure class="">
+                            {% include "tags/detail_thumbnail.html" %}
+
+
+                                        <figcaption class="single-caption text-center">
+                                                {% if post.credit %}{{ post.credit|markdown }}{% else%}
+                                                <a href="https://achiengcindy.com">Image By Cindy</a>{% endif %}
+
+                                        </figcaption>
+
+                                    </figure>
                     <span>published on:
                             <a href="https://achiengcindy.com" rel="bookmark">
-                                <time class="entry-date date">{{ post.publish }}</time>|
+                                <time class="entry-date date" pubdate=''>{{ post.publish }}</time>|
                                <time class="updated date">{{ post.updated }}</time>
                             </a>
                     </span>
                     by
                     <span class="author vcard"><a class="url fn n" href="https://achiengcindy.com/aboutcindy/">{{ post.author }}</a></span>
                     <span class="cat-links">
-                            In category:
-                
-                            <a href="https://achiengcindy.com/" rel="category tag">
-                                
-                                
-                                </a><a href="/blog/tutorial-series/">Tutorial Series</a>
-                                
-                                
+                          
+
+                            In categor{{ categories.count|pluralize:"y,ies" }}:
+{% for c in categories %}
+<a href="{{ c.get_absolute_url }}" rel="category tag">{{ c.title }}</a>
+{% if not forloop.last %}, {% endif %}
+{% endfor %}
+
+       
                             
                         </span>
+
+                      
                 
  
             </header>
-            <div id="post-excerpt">   {{ post.body|linebreaks }}
+            <div id="post-excerpt">   {{ post.body|markdown }}
+                   
+            </div>
+            <footer id="post-social">
                     <p class="tags">
                             Tags:
                             {% for tag in post.tags.all %}
@@ -42,15 +59,33 @@
                             {% if not forloop.last %}, {% endif %}
                             {% endfor %}
                             </p>
-            </div>
-            <footer id="post-meta"></footer>
+
+                         
+                            <ul class="social-buttons mb">
+                                    <li>
+                                        <a style="background-color : #f26522;" target="_blank" class='share-email' href="mailto:?subject={{post.title|urlencode}}&body=http://achiengcindy.com{{post.get_absolute_url|urlencode}}">✉</a>
+                                    </li>
+                                    <li>
+                                        <a style="background-color : rgb(66, 101, 185)" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://achiengcindy.com{{post.get_absolute_url|urlencode}}">f</a>
+                                        
+                                    </li>
+                                    <li>
+                                        <a style="background-color : rgb(85, 172, 238)" target="_blank" href="https://twitter.com/home?url={{post.get_absolute_url|urlencode}}&text={{post.title|urlencode}}&via=achiengcindy.com" class="share-twitter">t</a>
+                                    </li>
+                                    <li>
+                                        <a style="background-color: rgb(76, 174, 227)" target="_blank" href="http://www.linkedin.com/shareArticle?url=http://achiengcindy.com{{post.get_absolute_url|urlencode}}&title={{post.title|urlencode}}&summary={{title}}&source=achiengcindy.com">
+                                            l</a>  
+                                    </li>
+        
+                                </ul>
+            </footer>
         </section>
         <section class="related_posts">
                 <h3>Related Articles</h3>
                 <!--https://unicode-table.com/en/sets/emoji/-->
                 <ul class="row">
                     {% for post in similar_posts %}
-                    <li class="column column-2 column-3">
+                    <li class="column col-2 column-3 col-4">
                         <article class="related-article">
                             {% include 'tags/list_thumbnail.html' %}
                             <h4 class="related-post-title"><a href="{{post.get_absolute_url}}" class="article-related-link"></a>
@@ -61,17 +96,20 @@
                 </ul>
             </section>
             <!-- /.related_posts -->
-            <section class="author-description">
-                <h3 class="author-name"><a href="https://achiengcindy.com" alt="{{ post.author }}">{{ post.author }}</a></h3>
-                <p>I am a Django developer and Co-founder of Oark Limited a tech company based in Nairobi Kenya.
-                    I love to share my coding journey with the world with the aim to teach ,learn and inspire.
-                    I speak and host tech events.Away from programming, I 
-                    like to spend time with my dog Tess.</p>
+            <section class="author-bio pt">
+                <figure  class="avatar">
+                    <img src="/static/images/cindym400x400.jpg" alt="cindy achieng"></figure>
+                <div class="author-description">
+                        <h3 class="author-name"><a href="https://achiengcindy.com" alt="{{ post.author }}">{{ post.author }}</a></h3>
+                        <p>I am a mobile-web developer highly skilled in django and Co-founder of Oark Limited a tech company based in Nairobi Kenya.
+                                I love to share my coding journey with the world with the aim to teach ,learn and inspire.
+                                <a href="/aboutcindy/">More about Cindy</a>
+                                </p>
+                </div>
             </section>
             <!--.author-bio-->
 
-
-    <section class="comments">
+<!--     <section class="comments">
             {% with comments.count as total_comments %}
             <h3>{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
             {% endwith %}
@@ -79,7 +117,7 @@
             {% for comment in comments %}
 <div class="comment">
 <p class="info">
-Comment {{ forloop.counter }} by {{ comment.commenter}}
+Comment {{ forloop.counter }} by {{ comment.commenter }}
 {{ comment.created }}
 </p>
 {{ comment.body|linebreaks }}
@@ -97,9 +135,33 @@ Comment {{ forloop.counter }} by {{ comment.commenter}}
 <button type="submit">Post Comment</button>
 </form>
 {% endif %}
-    </section>
+    </section> -->
+    <section class="comments-area">
+            <div id="disqus_thread"></div>
+            <script>
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+                var disqus_config = function() {
+                    this.page.url = "https://achiengcindy.com/{{post.get_absolute_url}}"; // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = "{{post.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+
+                (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document,
+                        s = d.createElement('script');
+                    s.src = 'https://achiengcindy.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
+                                powered by Disqus.</a></noscript>
+
+        </section>
     </div>
-<aside class="sidebar column col-4">
+<aside class="sidebar column col-6">
         <h3>Trending <span>🔥</span> Post</h3>
         {% get_most_commented_posts as most_commented_posts %}
         <ul>

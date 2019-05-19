@@ -1,0 +1,11 @@
+{% load thumbnail %}
+{% with '{{ post.image.url }}' as source %}
+
+<img class="detailed-image" src="{% thumbnail post.image '500x400' as im %} {{ im.url }}{% endthumbnail %}"
+srcset="
+        {% thumbnail post.image '500x400'  as im %}{{ im.url }} {{ im.x }}w{% endthumbnail %},
+        {% thumbnail post.image '1000x400'  as im %}{{ im.url }} {{ im.x }}w{% endthumbnail %},
+        {% thumbnail post.image '1500x400'  as im %}{{ im.url }} {{ im.x }}w{% endthumbnail %}"
+alt="{{ post.caption }}"
+sizes=" 100vw" />
+{% endwith %}

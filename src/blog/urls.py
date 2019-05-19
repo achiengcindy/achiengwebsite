@@ -12,5 +12,5 @@ urlpatterns = [
     # #re_path(r'^(?P<post_id>\d+)/share/$', views.post_share, name='post_share'),
     # path('feed/', LatestPostsFeed(), name='post_feed'),
     # # re_path(r'^search/$', views.post_search, name='post_search'),
-    # path('<slug:slug>/', views.category_list, name='category_list')
+    path('<slug:slug>/', views.category_list, name='category_list')
 ]

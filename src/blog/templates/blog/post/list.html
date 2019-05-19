@@ -1,26 +1,19 @@
 {% extends "base.html" %}
+{% load blog_tags %}
 {% block title %}Cindy Achieng Blog{% endblock %}
 {% block content %}
 
-<section class=" elements-item-inner">
+
+
+<section class="masonry topspace elements-item-inner inner-item">
         {% for post in posts %}
-<article class="masonry">
+<article class="brick mb">
         <header id="entry-header">
-                <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                <figure class="">
-                    <img class="lazy" src=" /src/media/cache/3c/c4/3cc4f38e7036cf5106cde04124c95754.jpg" srcset="
-                                /src/media/cache/75/f6/75f64f3387d8d0a9e4806f4e4adaebe7.jpg 500w,
-                                /src/media/cache/19/36/1936f441998eed9d4b2d76c39013ac84.jpg 1000w,
-                                /src/media/cache/69/19/69192e068f74bfe89ce059e10bf272a5.jpg 1443w" alt="a beautiful image with a red background written JS" sizes=" (min-width: 768px) 50vw,(min-width: 992px) 33vw, 100vw">
-                                            <figcaption class="single-caption text-center">
-                                                Image By 
-                                                        <a href="https://achiengcindy.com">Cindy</a>
-                                            </figcaption>
-                                        </figure>
-                <time class="date">Published {{ post.publish }} by {{ post.author }}</time>
+         <figure>{% include "tags/list_thumbnail.html" %}</figure>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
         </header>
-        <div id="post-excerpt"> {{ post.body|truncatewords:30|linebreaks }}
-            
+        <div id="post-excerpt"> {{ post.body|truncatewords:30|markdown }}
+
         </div>
             <footer id="post-meta">
                   

@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load blog_tags %} 
+{% block title %}Home -Cindy Achieng{% endblock %} 
+{% block banner %}
+<section class="hero topspace text-center mb" role="banner">
+      <h1 class="desc"> Hello, I'm Cindy<span style="color:#AEC33A;">.</span></h1>
+      <h2 style="color:#fff;">I talk about Coding and share life experiences</h2>
+</section>
+{% endblock %} 
+{% block content %}
+   <div class=" column inner-item text-center mb">
+      Creativity is just connecting things. When you ask creative people how they did something,
+      they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
+      </br>- Steve Job’s
+   </div>
+   <section class="row elements-item-inner mb">
+      <article class="column col-2 mentor">
+          <div class="inner-item pb">
+         <h2>Mentorship.</h2>
+         <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
+         <p class="mb">I am a Tech ambassador for women.I believe it's time for the gender gap in tech to be filled.I offer mentorship to girls and women who code. I talk,organize and host tech events. </p>
+         <a href="{% url 'contact' %}" class="button">Contact Me</a>
+         </div>
+      </article>
+        <div class="column col-2 image-item" style="background-image: url('{% static 'images/cindyalc1.png' %}')" ;>
+        </div>
+      
+
+         
+         <div class="column col-2 image-item" style="background-image: url('{% static 'images/cindyalc4.png' %}')" ;>
+
+         </div>
+
+      <article class="column col-2 learn">
+            <div class="inner-item pb">
+         <h2>Learn</br> programming</h2>
+            <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
+            <p class="mb">The whole idea is to empower you to dive into coding.You have what it takes and the time to start is now.Learn Django, javascript and many other web technologies absolutely free</p>
+            <a class="button" href="{% url 'blog:post_list' %}">Go To Class</a>
+            </div>
+        
+      </article>
+      <article class="column col-2 host">
+          <div class="inner-item pb">
+
+                <h2>Hosting.</h2>
+                <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
+                <p class="mb">I can host small to medium web application at reasonable charges.Host your Django, wordpress,perl and others with me</p>
+                <a class="button" href="/aboutcindy/">Contact Me</a>
+          </div>
+         
+         
+        
+      </article>
+    
+         <div class="image-item column col-2" style="background-image: url('{% static 'images/cindyalc8.png' %}')" ;>
+         </div>
+   </section>
+<section class="recent_blogs mb pt pb">
+   <div class="elements-item-inner text-center">
+      <h2 class="section-title">Latest Blog</h2>
+      <div class="edgtf-separator-holder clearfix  text-center">
+         <div class="edgtf-separator" style="border-color: #fEC748;"></div>
+      </div>
+      {% show_latest_posts 3 %}
+      <button class="pt"><a class="more__posts" href="{% url 'blog:post_list' %}">More Posts</a></button>
+   </div>
+</section>
+<!-- Banner video -->
+<section class="parallax pb pt">
+   <div class="container text-center">
+      <h2 class="section-title">Subscribe to Newsletter.</span></h2>
+      <div class="edgtf-separator clearfix text-center" style="border-color: #fEC748;"></div>
+      <p class="dis-block">
+         <button><a href="{% url 'newsletter:subscribe' %}" target="_blank">Join my newsletter</button></a>
+      </p>
+   </div>
+</section>
+<section class="portfolio pt pb text-center ">
+   <h2 class="section-title">Portfolio</h2>
+   <div class="edgtf-separator clearfix" style="border-color: #fEC748;"></div>
+   <h4>view some amazing projects</h4>
+   <div class="masonry elements-item-inner">
+        <div class="portfolio-overlay">
+                <img class="portfolio-image" src="{% static 'images/decoronline.png' %}" alt="A beautiful imag of a potted plant">
+                <div class="image-caption-wrapper">
+                    <div class="image-caption">
+                        <p><em>Decor Ecommerce</em></p>
+                        <p><strong>Ecommerce Website for interior decor.Created in Django</strong></p>
+                        <p><button><a href="https://decor.co.ke" target="_blank">View Decor</a></button></p>
+                    </div>
+                </div>
+            </div>
+    
+    
+            <div class="portfolio-overlay">
+                <img class="portfolio-image" src="{% static 'images/library.co.ke.png' %}" alt="3 black bars laid vertically with a text library.co.ke">
+                <div class="image-caption-wrapper">
+                    <div class="image-caption">
+                            <p><em>Ecommerce</em></p>
+                        <p><strong>A virtual library for all you revision needs.Maste/phd students can publish</strong></p>
+                        <p><button><a href="https://library.co.ke/" target="_blank">View Library</a></button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio-overlay">
+                    <img class="portfolio-image" src="{% static 'images/library.co.ke.png' %}" alt="3 black bars laid vertically with a text library.co.ke">
+                    <div class="image-caption-wrapper">
+                        <div class="image-caption">
+                                <p><em>Ecommerce</em></p>
+                            <p><strong>A virtual library for all you revision needs.Maste/phd students can publish</strong></p>
+                            <p><button><a href="https://library.co.ke/" target="_blank">View Library</a></button></p>
+                        </div>
+                    </div>
+                </div>
+   </div>
+</section>
+<section class="partners pb" style="background-color: #fff;">
+   <div class="elements-item-inner">
+      <h2 class="text-center section-title">Partners</h2>
+      <div class="edgtf-separator-holder clearfix  text-center mb">
+         <div class="edgtf-separator" style="border-color: #fEC748;"></div>
+      </div>
+      <ul class="image-overlay">
+         <li class="overlay">
+            <img src="{% static 'images/mailjet.png' %}" alt="a plane on a yellow background" class="client-image">
+            <img src="{% static 'images/mailjet.png' %}" alt="" class="hover-image">
+         </li>
+         <li class="overlay">
+            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="client-image">
+            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="hover-image">
+         </li>
+         <li class="overlay">
+            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="client-image">
+            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="hover-image">
+         </li>
+         <li class="overlay">
+            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="client-image">
+            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="hover-image">
+         </li>
+        </ul>
+   </div>
+</section>
+{% endblock %}

@@ -6,14 +6,13 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-django = "==2.1.7"
+django = "*"
+sorl-thumbnail = "*"
 whitenoise = "*"
 django-taggit = "*"
 python-decouple = "*"
-sorl-thumbnail = "*"
-django-tinymce = "*"
 pillow = "*"
 markdown = "*"
 
 [requires]
-python_version = "3.6"
+python_version = "3.7"

@@ -4,11 +4,14 @@
 {% extends "base.html" %}
 {% block title %}Contact Cindy Achieng{% endblock %}
 {% block content %}
-<h2 class="">Talk to Cindy</h2>
-<form method="post">
+<div class="elements-item-inner topspace">
+<h2 class="text-center">Talk to Cindy</h2>
+<form method="post" class="signup-form inner-item">
     {% csrf_token %}
     {{ contactform.as_p }}
       <button type="submit">Contact Us</button>
 </form>
-
+</div>
 {% endblock %}
+
+

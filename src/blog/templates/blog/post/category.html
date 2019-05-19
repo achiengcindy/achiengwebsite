@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load blog_tags %}
+{% block title %}Cindy Achieng Blog{% endblock %}
+{% block content %}
+<h2>{{ category.name }}</h2>
+{{ category.description }}
+
+{% for p in posts %}
+<div class="product_thumbnail">
+<a href="{{ p.get_absolute_url }}">
+<img src="{{ MEDIA_URL }}images/products/thumbnails/{{ p.image
+}}" 
+alt="{{ p.name }}" class="bn" />
+<br />
+{{ p.name }}
+</a>
+</div>
+{% endfor %}
+{% endblock %}
+

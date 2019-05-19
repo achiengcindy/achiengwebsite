@@ -10,7 +10,7 @@
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-block" type="submit" value="Send me instructions!">Resend Link</button> 
+    <button type="submit" value="Send me instructions!">Resend Link</button> 
   </form>
 </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 
 from django.shortcuts import render, get_object_or_404
-from .models import Post,Comment
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Post,Comment, Category
 from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger 
 from .forms import  CommentForm
 from taggit.models import Tag
@@ -15,13 +16,13 @@ def post_list(request, tag_slug=None):
         tag = get_object_or_404(Tag, slug=tag_slug)
         object_list = object_list.filter(tags__in=[tag])
 
-    paginator = Paginator(object_list, 6) # 6 posts in each page
+    paginator = Paginator(object_list, 12) # 6 posts in each page
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
         # If page is not an integer deliver the first page
-        posts = paginator.page(2)
+        posts = paginator.page(1)
     except EmptyPage:
         # If page is out of range deliver last page of results
         posts = paginator.page(paginator.num_pages)
@@ -29,9 +30,18 @@ def post_list(request, tag_slug=None):
     return render(request,'blog/post/list.html',{'posts': posts, 'page': page,'tag': tag})
 
 
+def category_list(request, slug):
+    category = get_object_or_404(Category, slug=slug)
+    posts = category.post_set.all()
+    meta_description = category.meta_description
+    context = {'posts':posts, 'category': category }
+    return render(request, 'blog/post/category.html', context)
+
 
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post,status='published',publish__year=year,publish__month=month,publish__day=day)
+    categories = post.categories.filter(is_active=True)
+    meta_description = post.meta_description
 
     # list of active parent comments
     comments = post.comments.filter(active=True, parent__isnull=True)
@@ -80,5 +90,7 @@ def post_detail(request, year, month, day, post):
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)
     similar_posts = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags','-publish')[:4]
-    return render(request,'blog/post/detail.html',{'post': post,'comments': comments,
-                   'comment_form': comment_form,'new_comment': new_comment,'similar_posts': similar_posts})
+    context = {'post': post,'comments': comments,'comment_form': comment_form,'new_comment': new_comment,'similar_posts': similar_posts,'meta_url':post.get_absolute_url,'meta_image':post.image.url,'meta_title':post.title, 'meta_description':meta_description,'categories':categories}
+    return render(request,'blog/post/detail.html', context)
+
+

@@ -1,15 +1,20 @@
 {% extends "base.html" %}
-{% block title %}Edit your account{% endblock %}
+{% block title %}Account settings{% endblock %}
 {% block content %}
 
 
 {% block content %}
-<h1>My Account</h1>
-<strong>Welcome, {{ name|capfirst }}!</strong>
-<fieldset class="my_account">
-	<legend>Account Settings</legend>
-	<ul>
-	<li><a href="{% url django.contrib.auth.views.password_change %}">Change Password</a></li>
-	</ul>
-</fieldset>
+<div class=" elements-item-inner topspace inner-item mb">
+		<h2 class="text-center"><strong>Welcome, {{ name|capfirst }}!</strong></h2>
+		<fieldset class="my_account">
+			<legend>Account Settings</legend>
+			<ul>
+			<li><a href="{% url django.contrib.auth.views.password_change %}">Change Password</a></li>
+			</ul>
+		</fieldset>
+</div>
+
 {% endblock %}
+
+
+
