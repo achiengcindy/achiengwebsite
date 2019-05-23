@@ -26,3 +26,4 @@ def Contact(request):
 
     return render(request, 'contact.html', {'contactform': contactform})
 
+
