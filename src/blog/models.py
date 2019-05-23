@@ -17,7 +17,7 @@ class Category(models.Model):
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-
+    meta_description = models.CharField(max_length=255, help_text='Content for description meta tag')
     objects = models.Manager()
     active = ActiveCategoryManager()
 
@@ -50,7 +50,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, related_name='blog_posts',on_delete=models.CASCADE)
     image = models.ImageField(upload_to='blog/%Y/%m/%d', blank=True)
     caption = models.CharField(max_length=250,null=True, blank=True)
-    credit = models.URLField(max_length=250,null=True, blank=True)
+    credit = models.CharField(max_length=250,null=True, blank=True)
     body = models.TextField()
     is_active = models.BooleanField(default=True)
     publish = models.DateTimeField(default=timezone.now)
@@ -77,7 +77,7 @@ class Post(models.Model):
         return reverse('blog:post_detail', args=[self.publish.year,self.publish.strftime('%m'),self.publish.strftime('%d'),self.slug]) 
 
     def get_permalink_url(self):
-        return reverse('permalink', args=[self.id])    
+        return reverse('permalink', args=[self.slug,self.id])    
 
 
 class Comment(models.Model):

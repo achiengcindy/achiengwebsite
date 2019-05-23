@@ -7,7 +7,7 @@
 {% block content %}
 <article class="row topspace elements-item-inner">
 <div class="detail-post column col-5">
-        <section>
+        <section class="single-post">
             <header id="entry-header">
                     <h2>{{ post.title }}</h2>
                     <figure class="">
@@ -50,7 +50,7 @@
                    
             </div>
             <footer id="post-social">
-                    <p class="tags">
+                <p class="tags">
                             Tags:
                             {% for tag in post.tags.all %}
                             <a href="{% url "blog:post_list_by_tag" tag.slug %}">
@@ -96,11 +96,10 @@
                 </ul>
             </section>
             <!-- /.related_posts -->
-            <section class="author-bio pt">
-                <figure  class="avatar">
-                    <img src="/static/images/cindym400x400.jpg" alt="cindy achieng"></figure>
-                <div class="author-description">
-                        <h3 class="author-name"><a href="https://achiengcindy.com" alt="{{ post.author }}">{{ post.author }}</a></h3>
+            <section class="author-bio mb">
+                <img class="avatar" src="/static/images/cindym400x400.jpg" alt="cindy achieng">
+                <div class="author-description"  style="padding-left:6em;">
+                        <h3 class="author-name"  style="margin-top:0;"><a href="https://achiengcindy.com" alt="{{ post.author }}">{{ post.author }}</a></h3>
                         <p>I am a mobile-web developer highly skilled in django and Co-founder of Oark Limited a tech company based in Nairobi Kenya.
                                 I love to share my coding journey with the world with the aim to teach ,learn and inspire.
                                 <a href="/aboutcindy/">More about Cindy</a>
