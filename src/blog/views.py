@@ -94,8 +94,8 @@ def post_detail(request, year, month, day, post):
     return render(request,'blog/post/detail.html', context)
 
 
-def permalink(request, slug, id):
-    post = get_object_or_404(Post,slug=slug, id=id)
+def permalink(request,  id):
+    post = get_object_or_404(Post, id=id)
     return HttpResponseRedirect(post.get_absolute_url())
 
 

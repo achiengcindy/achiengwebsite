@@ -77,7 +77,7 @@ class Post(models.Model):
         return reverse('blog:post_detail', args=[self.publish.year,self.publish.strftime('%m'),self.publish.strftime('%d'),self.slug]) 
 
     def get_permalink_url(self):
-        return reverse('permalink', args=[self.slug,self.id])    
+        return reverse('permalink', args=[self.id])    
 
 
 class Comment(models.Model):
