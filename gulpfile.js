@@ -6,9 +6,16 @@ const jshint = require("gulp-jshint");
 const imageResize = require("gulp-image-resize");
 const rename = require("gulp-rename");
 const babel = require('gulp-babel');
+const imagemin = require('gulp-imagemin');
+const responsive = require('gulp-responsive-images');
+const webp = require('gulp-webp');
+
+// we write functions now in gulp 4
 
 
-gulp.task("ProcessJS", () => {
+// process javascript
+// convert to es5
+function processJS() {
   return pipeline(
     gulp.src("./src/static/js/**/*.js"),
     jshint({ esversion: 6 }),
@@ -16,49 +23,99 @@ gulp.task("ProcessJS", () => {
     babel({ presets: ["env"] }),
     gulp.dest("./src/static/dist/js")
   );
-});
-
-
-gulp.task('processHTML', () => {
-
-});
-
-gulp.task("processCSS", () => {
+};
+//process css
+function processCSS() {
   return pipeline(
     gulp.src("./src/static/css/**/*.css"),
     cleanCSS({ compatibility: "ie8" }),
     gulp.dest("./src/static/dist/css")
   );
-});
+};
 
-gulp.task("resize-image", () => {
+//process html
+function processHTML() {
   return pipeline(
-      gulp.src("./src/static/**/*.{jpg,jpeg,png,gif,ico,svg}"),
-    imageResize({ width:320}),
-    rename((path) =>  {path.basename += "-s";}),
-    gulp.dest("./src/static/dist/images")
-    );
-   return pipeline(
-      gulp.src("./src/static/**/*.{jpg,jpeg,png,gif,ico,svg}"),
-    imageResize({ width:480}),
-    rename((path) =>  {path.basename += "-m";}),
-    gulp.dest("./src/static/dist/images")
-    );
-    return pipeline(
-      gulp.src("./src/static/**/*.{jpg,jpeg,png,gif,ico,svg}"),
-    imageResize({ width:800}),
-    rename((path) =>  {path.basename += "-l";}),
-    gulp.dest("./src/static/dist/images")
-    );
-     return pipeline(
-      gulp.src("./src/static/**/*.{jpg,jpeg,png,gif,ico,svg}"),
-    imageResize({ width:1000}),
-    rename((path) =>  {path.basename += "-xl";}),
-    gulp.dest("./src/static/dist/images")
-    );
-    
+  );
+};
 
-});
+//process images
+function processImages() {
+  return pipeline(
+    gulp.src("./src/static/img/**/*"),
+    responsive({
+      '*.png': [{
+        width: 1080,
+        height: 400,
+        crop: true,
+        gravity: 'Center',
+        suffix: '-1080x400'
+      },
 
+      {
+        width: 1024,
+        height: 400,
+        crop: true,
+        gravity: 'Center',
+        suffix: '-1024x400'
+      },
+      {
+        width: 992,
+        height: 500,
+        gravity: 'Center',
+        suffix: '-992x500'
+      },
+      {
+        width: 800,
+        height: 500,
+        gravity: 'Center',
+        suffix: '-800x500'
+      },
+      {
+        width: 1080,
+        height: 750,
+        suffix: '-1080x750'
+      },
+      {
+        width: 768,
+        height: 768,
+        suffix: '-768x768'
+      },
+      {
+        width: 650,
+        height: 650,
+        crop: true,
+        gravity: 'Center',
+        suffix: '-650x650'
+      },
+      {
+        width: 500,
+        height: 500,
+        suffix: '-500x500'
+      },
+      {
+        width: 350,
+        height: 350,
+        crop: true,
+        suffix: '-350x350'
+      }
+      ]
+    }),
+    gulp.dest("./src/static/img/")
+  );
+};
 
-gulp.task("minify", gulp.series("ProcessJS", "processCSS", "resize-image"));
+// convert images we
+function convertImage() {
+  return pipeline(
+    gulp.src("./src/static/img/**/*"),
+    webp(),
+    gulp.dest("./src/static/img/")
+  );
+};
+
+exports.processJS = processJS;
+exports.processCSS = processCSS;
+exports.processHTML = processHTML;
+exports.processImages = processImages;
+exports.convertImage = convertImage;
