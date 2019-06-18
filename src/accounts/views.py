@@ -51,9 +51,6 @@ def register(request):
         user_form = RegistrationForm()
     return render(request, 'accounts/register.html',{'user_form': user_form})
 
-def account_activation_sent(request):
-    return render(request, 'accounts/account_activation_sent.html')
-
 def activate(request, uidb64, token, backend='accounts.authentication.EmailAuthBackend'):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -71,22 +68,6 @@ def activate(request, uidb64, token, backend='accounts.authentication.EmailAuthB
 
 def account_activation_sent(request):
     return render(request, 'accounts/account_activation_sent.html')
-
-def activate(request, uidb64, token, backend='accounts.authentication.EmailAuthBackend'):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError,User.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user, 'accounts.authentication.EmailAuthBackend')
-        return redirect('login')
-    else:
-        return render(request, 'accounts/account_activation_invalid.html')
-
-
 
 @login_required
 def accounts_edit(request):
