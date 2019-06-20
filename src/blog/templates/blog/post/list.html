@@ -4,15 +4,15 @@
 {% block content %}
 
 
-<section class="masonry topspace elements-item-inner inner-item">
-        {% for post in posts %}
+<section class="topspace masonry">
+        
+                        {% for post in posts %}
         <article class="brick mb">
                 <header id="entry-header">
-                                <a href="{{ post.get_absolute_url }}">
                         <figure>{% include "tags/list_thumbnail.html" %}</figure>
-                        <h3>{{ post.title }}</h3>
-                </a>
+                        <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                 </header>
+                <div class=" elements-item-inner inner-item container">
                 <div id="post-excerpt"> {{ post.body|truncatewords:30|markdown }}</div>
                 <footer id="post-meta">
                         <div class="post-bottom-left text-left">
@@ -20,13 +20,19 @@
                                 </div>
                         </div>
                         <div class="post-bottom-right text-right">
-                                <a href="{{ post.get_absolute_url }}" class="btn-read-more"> <span
+                                <a href="{{ post.get_permalink_url }}" class="btn-read-more" rel=canonical> <span
                                                 class="edgtf-btn-text">Read More</span> </a>
                         </div>
                 </footer>
+        </div>
         </article>
         {% endfor %}
-
+       
 </section>
 {% include "tags/pagination.html" with page=posts %}
 {% endblock %}
+
+
+
+
+
