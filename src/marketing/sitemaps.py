@@ -12,10 +12,11 @@ class PostSitemap(Sitemap):
         return Post.published.all()
 
     def lastmod(self, obj):
-        return obj.publish
+        return obj.updated
 
-    def location(self, obj):
-        return obj.get_permalink_url()
+    # def location(self, obj):
+    #     return obj.get_permalink_url()
+
 
 
 class CategorySitemap(Sitemap):

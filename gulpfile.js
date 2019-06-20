@@ -44,38 +44,40 @@ function processImages() {
   return pipeline(
     gulp.src("./src/static/img/**/*"),
     responsive({
-      '*.png': [{
+      '*.jpg': [{
         width: 1080,
-        height: 400,
-        crop: true,
-        gravity: 'Center',
-        suffix: '-1080x400'
-      },
+      height: 1080,
+      gravity: 'Center',
+      suffix: '-1080x1080'
+    },
+    {
+      width: 1024,
+    height: 1024,
+    gravity: 'Center',
+    suffix: '-1024x1024'
+  },
 
       {
-        width: 1024,
-        height: 400,
-        crop: true,
-        gravity: 'Center',
-        suffix: '-1024x400'
+        width: 992,
+        height: 992,
+        suffix: '-992x992'
       },
       {
         width: 992,
-        height: 500,
-        gravity: 'Center',
-        suffix: '-992x500'
+        height: 1000,
+        suffix: '-992x1000'
       },
       {
         width: 800,
-        height: 500,
-        gravity: 'Center',
-        suffix: '-800x500'
+        height: 800,
+        suffix: '-800x800'
       },
       {
-        width: 1080,
-        height: 750,
-        suffix: '-1080x750'
+        width: 800,
+        height: 1000,
+        suffix: '-800x1000'
       },
+  
       {
         width: 768,
         height: 768,
@@ -84,19 +86,18 @@ function processImages() {
       {
         width: 650,
         height: 650,
-        crop: true,
         gravity: 'Center',
         suffix: '-650x650'
       },
       {
         width: 500,
         height: 500,
+        crop: true,
         suffix: '-500x500'
       },
       {
         width: 350,
         height: 350,
-        crop: true,
         suffix: '-350x350'
       }
       ]

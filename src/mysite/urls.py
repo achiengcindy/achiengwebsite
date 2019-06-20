@@ -20,8 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-from blog import views
-
 from marketing.sitemaps import PostSitemap,CategorySitemap,FlatPageSitemap
 sitemaps = {'categories': CategorySitemap,'posts': PostSitemap,'flatpages': FlatPageSitemap}
 
@@ -36,7 +34,6 @@ urlpatterns = [
     path('pages/', include('django.contrib.flatpages.urls')),
     path('newsletter/', include('newsletter.urls' , namespace='newsletter')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
-    path('permalink/<id>/', views.permalink, name='permalink'),
     path('sw.js', (TemplateView.as_view(template_name="sw.js", content_type='application/javascript', )), name='sw.js'),
 ]
 
