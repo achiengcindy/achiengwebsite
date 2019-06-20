@@ -1,71 +1,133 @@
 {% extends "base.html" %}
 {% load staticfiles %}
-{% load blog_tags %} 
-{% block title %}Home -Cindy Achieng{% endblock %} 
+{% load blog_tags %}
+{% block title %}Home -Cindy Achieng{% endblock %}
 {% block banner %}
 <section class="hero topspace text-center mb" role="banner">
-      <h1 class="desc"> Hello, I'm Cindy<span style="color:#AEC33A;">.</span></h1>
-      <h2 style="color:#fff;">I talk about Coding and share life experiences</h2>
+   <h1 class="desc"> Hello, I'm Cindy<span style="color:#AEC33A;">.</span></h1>
+   <h2 style="color:#fff;">I talk about Coding and share life experiences</h2>
 </section>
-{% endblock %} 
+{% endblock %}
 {% block content %}
-   <div class=" column inner-item text-center mb">
-      Creativity is just connecting things. When you ask creative people how they did something,
-      they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them after a while.
-      </br>- Steve Job’s
-   </div>
-   <section class="row elements-item-inner mb">
-      <article class="column col-2 mentor">
-          <div class="inner-item pb">
-         <h2>Mentorship.</h2>
-         <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
-         <p class="mb">I am a Tech ambassador for women.I believe it's time for the gender gap in tech to be filled.I offer mentorship to girls and women who code. I talk,organize and host tech events. </p>
-         <a href="{% url 'contact' %}" class="button">Contact Me</a>
-         </div>
-      </article>
-        <div class="column col-2 image-item" style="background-image: url('{% static 'images/cindyalc1.png' %}')" ;>
-        </div>
-      
+<section class="mysay pt pb mt">
 
-         
-         <div class="column col-2 image-item" style="background-image: url('{% static 'images/cindyalc4.png' %}')" ;>
+            <div class="container row inner-item text-center">
+                  <span class="mb">Creativity is just connecting things. When you ask creative people how they did something,
+                     they feel a little guilty because they didn't really do it, they just saw something. It seemed obvious to them
+                     after
+                     a while.
+                     </br>- Steve Job’s</span>
+               </div>
 
-         </div>
+</section>
 
-      <article class="column col-2 learn">
-            <div class="inner-item pb">
-         <h2>Learn</br> programming</h2>
-            <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
-            <p class="mb">The whole idea is to empower you to dive into coding.You have what it takes and the time to start is now.Learn Django, javascript and many other web technologies absolutely free</p>
-            <a class="button" href="{% url 'blog:post_list' %}">Go To Class</a>
+<section class="cindy-images">
+   <div class="row">
+         <article class="column col-2 mentor">
+            <div class="inner">
+               <div class="elements-item-inner custom">
+                     <h2>Mentorship.</h2>
+                     <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
+                     <p class="mb">I am a Tech ambassador for women.I believe it's time for the gender gap in tech to be
+                        filled.I
+                        offer mentorship to girls and women who code. I talk,organize and host tech events. </p>
+                     <a href="{% url 'contact' %}" class="button">Contact Me</a>
+             </div>
             </div>
-        
-      </article>
-      <article class="column col-2 host">
-          <div class="inner-item pb">
+            </article>
+            <div class="column col-2 image-item mentor-image">
+               <div class="img-with-aniamtion-wrap">
+                  <div class="inner">
+                        <img class="img-with-animation"
+                        src="{% static 'images/cindymentorship-1080x1080.jpg' %}"
+                         srcset="
+                        {% static 'images/cindymentorship-1080x1080.jpg' %} 1080w,
+                        {% static 'images/cindymentorship-1024x1024.jpg' %} 1024w,
+                        {% static 'images/cindymentorship-992x992.jpg' %} 992w,
+                        {% static 'images/cindymentorship-800x800.jpg' %} 800w, 
+                        {% static 'images/cindymentorship-768x768.jpg' %} 768w, 
+                        {% static 'images/cindymentorship-650x650.jpg' %} 650w,
+                        {% static 'images/cindymentorship-500x500.jpg' %} 500w,
+                        {% static 'images/cindymentorship-350x350.jpg' %} 350w"
+                        sizes="100vw"  alt="Contact Cindy" style="opacity: 1;">
+                  </div>
+               </div>
+            </div>
 
-                <h2>Hosting.</h2>
-                <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
-                <p class="mb">I can host small to medium web application at reasonable charges.Host your Django, wordpress,perl and others with me</p>
-                <a class="button" href="/aboutcindy/">Contact Me</a>
-          </div>
-         
-         
-        
-      </article>
-    
-         <div class="image-item column col-2" style="background-image: url('{% static 'images/cindyalc8.png' %}')" ;>
-         </div>
-   </section>
+         <div class="column col-2 image-item learn-image">
+               <div class="img-with-aniamtion-wrap">
+                  <div class="inner">
+                           <img class="img-with-animation"
+                           src="{% static 'images/img_5274-1080x1080.jpg' %}"
+                            srcset="
+                           {% static 'images/img_5274-1080x1080.jpg' %} 1080w,
+                           {% static 'images/img_5274-1024x1024.jpg' %} 1024w,
+                           {% static 'images/img_5274-992x992.jpg' %} 992w,
+                           {% static 'images/img_5274-800x800.jpg' %} 800w, 
+                           {% static 'images/img_5274-768x768.jpg' %} 768w, 
+                           {% static 'images/img_5274-650x650.jpg' %} 650w,
+                           {% static 'images/img_5274-500x500.jpg' %} 500w,
+                           {% static 'images/img_5274-350x350.jpg' %} 350w"
+                           sizes="100vw"  alt="View Blog Post" style="opacity: 1;" />
+                  </div>
+               </div>
+            </div>
+            <article class="column col-2 learn">
+                  <div class="inner">
+                              <div class="elements-item-inner custom">
+                     <h2>Learn</br> programming</h2>
+                     <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
+                     <p class="mb">The whole idea is to empower you to dive into coding.You have what it takes and the time to
+                        start
+                        is now.Learn Django, javascript and many other web technologies absolutely free</p>
+                     <a class="button" href="{% url 'blog:post_list' %}">Go To Class</a>
+                  </div>
+                  </div>
+            
+            </article>
+  
+         <article class="column col-2 host">
+               <div class="inner">
+                     <div class="elements-item-inner custom">
+                     <h2>Hosting.</h2>
+                     <div class="edgtf-separator clearfix text-left" style="border-color: #fEC748;"></div>
+                     <p class="mb">I can host small to medium web application at reasonable charges.Host your Django,
+                        wordpress,perl
+                        and others with me</p>
+                     <a class="button" href="/aboutcindy/">Contact Me</a>
+                  </div>
+                  </div>
+            </article>
+            <div class="image-item host-image column col-2">
+               <div class="img-with-aniamtion-wrap">
+                  <div class="inner">
+                           <img class="img-with-animation"
+                           src="{% static 'images/img_5294-1080x1080.jpg' %}"
+                           srcset="
+                           {% static 'images/img_5294-1080x1080.jpg' %} 1080w,
+                           {% static 'images/img_5294-1024x1024.jpg' %} 1024w,
+                           {% static 'images/img_5294-992x992.jpg' %} 992w,
+                           {% static 'images/img_5294-800x800.jpg' %} 800w, 
+                           {% static 'images/img_5294-768x768.jpg' %} 768w, 
+                           {% static 'images/img_5294-650x650.jpg' %} 650w,
+                           {% static 'images/img_5294-500x500.jpg' %} 500w,
+                           {% static 'images/img_5294-350x350.jpg' %} 350w"
+                           sizes="100vw"  alt="leave a message" sizes="100vw"  alt="View Blog Post" style="opacity: 1;" />
+                  </div>
+               </div>
+            </div> 
+         </row>
+</section>
+
 <section class="recent_blogs mb pt pb">
-   <div class="elements-item-inner text-center">
-      <h2 class="section-title">Latest Blog</h2>
-      <div class="edgtf-separator-holder clearfix  text-center">
-         <div class="edgtf-separator" style="border-color: #fEC748;"></div>
-      </div>
-      {% show_latest_posts 3 %}
-      <button class="pt"><a class="more__posts" href="{% url 'blog:post_list' %}">More Posts</a></button>
-   </div>
+      <div class="container">
+            <h2 class="section-title text-center">Latest Blogs</h2>
+                  <div class="edgtf-separator-holder clearfix  text-center">
+                     <div class="edgtf-separator" style="border-color: #fEC748;"></div>
+                  </div>
+                  {% show_latest_posts 3 %}
+                        <a class="more__posts button text-center" href="{% url 'blog:post_list' %}">More Posts</a>
+         </div>
 </section>
 <!-- Banner video -->
 <section class="parallax pb pt">
@@ -77,69 +139,74 @@
       </p>
    </div>
 </section>
-<section class="portfolio pt pb text-center ">
-   <h2 class="section-title">Portfolio</h2>
-   <div class="edgtf-separator clearfix" style="border-color: #fEC748;"></div>
-   <h4>view some amazing projects</h4>
-   <div class="masonry elements-item-inner">
-        <div class="portfolio-overlay">
-                <img class="portfolio-image" src="{% static 'images/decoronline.png' %}" alt="A beautiful imag of a potted plant">
-                <div class="image-caption-wrapper">
-                    <div class="image-caption">
-                        <p><em>Decor Ecommerce</em></p>
-                        <p><strong>Ecommerce Website for interior decor.Created in Django</strong></p>
-                        <p><button><a href="https://decor.co.ke" target="_blank">View Decor</a></button></p>
-                    </div>
-                </div>
-            </div>
-    
-    
-            <div class="portfolio-overlay">
-                <img class="portfolio-image" src="{% static 'images/library.co.ke.png' %}" alt="3 black bars laid vertically with a text library.co.ke">
-                <div class="image-caption-wrapper">
-                    <div class="image-caption">
-                            <p><em>Ecommerce</em></p>
-                        <p><strong>A virtual library for all you revision needs.Maste/phd students can publish</strong></p>
-                        <p><button><a href="https://library.co.ke/" target="_blank">View Library</a></button></p>
-                    </div>
-                </div>
-            </div>
-            <div class="portfolio-overlay">
-                    <img class="portfolio-image" src="{% static 'images/library.co.ke.png' %}" alt="3 black bars laid vertically with a text library.co.ke">
-                    <div class="image-caption-wrapper">
-                        <div class="image-caption">
-                                <p><em>Ecommerce</em></p>
-                            <p><strong>A virtual library for all you revision needs.Maste/phd students can publish</strong></p>
-                            <p><button><a href="https://library.co.ke/" target="_blank">View Library</a></button></p>
-                        </div>
-                    </div>
-                </div>
-   </div>
-</section>
-<section class="partners pb" style="background-color: #fff;">
-   <div class="elements-item-inner">
-      <h2 class="text-center section-title">Partners</h2>
+
+<section class="partners pt pb" style="background-color: #fEC748;">
+   <div class="elements-item-inner container">
+      <!-- <h2 class="text-center section-title">Partners</h2>
       <div class="edgtf-separator-holder clearfix  text-center mb">
          <div class="edgtf-separator" style="border-color: #fEC748;"></div>
-      </div>
-      <ul class="image-overlay">
-         <li class="overlay">
+      </div> -->
+      <div class="image-overlay row">
+         <a href="" class="overlay">
             <img src="{% static 'images/mailjet.png' %}" alt="a plane on a yellow background" class="client-image">
-            <img src="{% static 'images/mailjet.png' %}" alt="" class="hover-image">
-         </li>
-         <li class="overlay">
-            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="client-image">
-            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="hover-image">
-         </li>
-         <li class="overlay">
-            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="client-image">
-            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="hover-image">
-         </li>
-         <li class="overlay">
-            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="client-image">
-            <img src="{% static 'images/library.jpg' %}" alt="library.co.ke logo" class="hover-image">
-         </li>
-        </ul>
+            <img src="{% static 'images/mailjet.png' %}" alt="a plane on a yellow background" class="hover-image">
+         </a>
+         <a href="https://library.co.ke/" target="_blank" rel="noopener" class="overlay">
+            <img src="{% static 'images/librarylogoblack-150w.jpg' %}" alt="library.co.ke logo" class="client-image">
+            <img src="{% static 'images/librarylogowhite-150w.png' %}" alt="library.co.ke logo" class="hover-image">
+         </a>
+         <a href="https://library.co.ke/" target="_blank" rel="noopener" class="overlay">
+            <img src="{% static 'images/librarylogoblack-150w.jpg' %}" alt="library.co.ke logo" class="client-image">
+            <img src="{% static 'images/librarylogoblack-150w.jpg' %}" alt="library.co.ke logo" class="hover-image">
+         </a>
+         <a href="https://library.co.ke/" target="_blank" rel="noopener" class="overlay">
+            <img src="{% static 'images/librarylogoblack-150w.jpg' %}" alt="library.co.ke logo" class="client-image">
+            <img src="{% static 'images/librarylogoblack-150w.jpg' %}" alt="library.co.ke logo" class="hover-image">
+         </a>
+      </div>
    </div>
 </section>
+<section class="portfolio pt pb text-center container">
+   <h2 class="text-center section-title">view some amazing projects</h2>
+   <!-- <h4 class="subtitle">view some amazing projects</h4> -->
+   <div class="masonry elements-item-inner ">
+      <div class="portfolio-overlay">
+         <img class="portfolio-image" src="{% static 'images/decoronline.png' %}">
+         <div class="image-caption-wrapper">
+            <div class="image-caption">
+               <p><em>Decor Ecommerce</em></p>
+               <p><strong>Ecommerce Website for interior decor.Created in Django</strong></p>
+               <p><button><a href="https://decor.co.ke" target="_blank">View Decor</a></button></p>
+            </div>
+         </div>
+      </div>
+      <div class="portfolio-overlay">
+         <img class="portfolio-image" src="{% static 'images/library.co.ke.png' %}"
+            alt="3 black bars laid vertically with a text library.co.ke">
+         <div class="image-caption-wrapper">
+            <div class="image-caption">
+               <p><em>Ecommerce</em></p>
+               <p><strong>A virtual library for all you revision needs.Maste/phd students can publish</strong></p>
+               <p><button><a href="https://library.co.ke/" target="_blank">View Library</a></button></p>
+            </div>
+         </div>
+      </div>
+      <div class="portfolio-overlay">
+         <img class="portfolio-image" src="{% static 'images/library.co.ke.png' %}"
+            alt="3 black bars laid vertically with a text library.co.ke">
+         <div class="image-caption-wrapper">
+            <div class="image-caption">
+               <p><em>Ecommerce</em></p>
+               <p><strong>A virtual library for all you revision needs.Maste/phd students can publish</strong></p>
+               <p><button><a href="https://library.co.ke/" target="_blank">View Library</a></button></p>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
 {% endblock %}
+
+<!-- https://stackoverflow.com/questions/35801807/gulp-image-resize-to-generate-multiple-output-sizes -->
+
+

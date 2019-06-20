@@ -1,13 +1,11 @@
 {% load blog_tags %}
 
-    <div class="row">
+    <div class="row elements-item-inner">
         {% for post in latest_posts %}
     <div class="column col-2 col-3">
-        <h3 class="text-center">
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        <h3 ><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
         </h3>
-        <p class="text-center">{{ post.body|markdown|truncatewords_html:25 }}</p>
+        <p>{{ post.body|markdown|truncatewords_html:25 }}</p>
     </div>
     {% endfor %}
 </div>
-

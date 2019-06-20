@@ -2,34 +2,33 @@
 {% load blog_tags %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        {% include 'tags/metatags.html' %}
-        <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="{% static 'dist/css/default.css' %}">
-        <link rel="stylesheet" href="{% static 'dist/css/main.css' %}">
-    </head>
-    <body>
-                {% include 'tags/navigation.html' %}
-        <main>
-                {% block banner %}{% endblock %}
-            {% block content %}{% endblock %}
-           
-            
-        </main>
-        <footer id="footer">
-                {% footer_links %}
-        </footer>
 
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-<script async src="{% static 'js/main.js' %}"></script>
-<script src="{% static 'js/highlight.pack.js' %}"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<head>
+    {% include 'tags/metatags.html' %}
+    <title>{% block title %}{% if page_title %}{{ page_title }} - {% endif %} 
+{{ site_name }}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
 
-    </body>
+<body>
+    {% include 'tags/navigation.html' %}
+    <main>
+        {% block banner %}{% endblock %}
+        {% block content %}{% endblock %}
+
+
+    </main>
+    <footer id="footer">
+        {% footer_links %}
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script async src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/highlight.pack.js' %}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</body>
+
 </html>
-
-
-
-
-

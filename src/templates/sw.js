@@ -5,13 +5,7 @@ self.addEventListener('install', function(event) {
         caches.open(staticCacheName).then(function(cache) {
             return cache.addAll([
                 '/',
-                '/static/css/main.css',
-                '/static/images/favicon.ico',
-                '/static/js/main.js',
-                'https://use.fontawesome.com/releases/v5.5.0/css/all.css',
-                'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js',
-                'https://code.jquery.com/jquery-3.2.1.slim.min.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atelier-forest-light.min.css',
+                '/static/css/main.css'
             ]);
         })
     );
@@ -68,5 +62,5 @@ self.addEventListener('message', function(event) {
   }); */
 
 
-  
-  
+
+
