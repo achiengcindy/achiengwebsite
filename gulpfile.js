@@ -48,36 +48,31 @@ function processImages() {
         width: 1080,
       height: 1080,
       gravity: 'Center',
+      ignoreAspectRatio:true,
       suffix: '-1080x1080'
     },
     {
       width: 1024,
     height: 1024,
     gravity: 'Center',
+    ignoreAspectRatio:true,
     suffix: '-1024x1024'
   },
 
       {
-        width: 992,
-        height: 992,
+        width: 1000,
+        height: 1000,
+        ignoreAspectRatio:true,
         suffix: '-992x992'
       },
-      {
-        width: 992,
-        height: 1000,
-        suffix: '-992x1000'
-      },
+
       {
         width: 800,
         height: 800,
+        ignoreAspectRatio:true,
         suffix: '-800x800'
       },
-      {
-        width: 800,
-        height: 1000,
-        suffix: '-800x1000'
-      },
-  
+
       {
         width: 768,
         height: 768,
@@ -86,6 +81,7 @@ function processImages() {
       {
         width: 650,
         height: 650,
+        ignoreAspectRatio:true,
         gravity: 'Center',
         suffix: '-650x650'
       },

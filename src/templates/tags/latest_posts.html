@@ -1,6 +1,6 @@
 {% load blog_tags %}
 
-    <div class="row elements-item-inner">
+    <div class="row elements-item-inner mb">
         {% for post in latest_posts %}
     <div class="column col-2 col-3">
         <h3 ><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>

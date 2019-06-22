@@ -1,22 +1,29 @@
-<div id="footer_outer" class="inner-item elements-item-inner row">
-        <nav role="navigation" class="column col-2">
-            {% with flatpage_list as pages %}
-            {% for page in pages %}
-            <a href="{{ page.url }}">{{ page.title }}</a>
-            {% endfor %}
-            {% endwith %}
-            <a href="https://achiengcindy.com/sitemap.xml">sitemap</a>
-            <a href='{% url "blog:post_feed" %}'>Subscribe to my RSS feed</a>
-        </nav>
-        <ul class="social-buttons column col-2">
-            <li><a style="background-color: #333" href="https://github.com/achiengcindy" target="_blank" rel="noopener" >g</a></li>
-            <li><a style="background-color : rgb(66, 101, 185)"
-                    href="https://www.facebook.com/cindy.muga.1" target="_blank" rel="noopener" >f</a></li>
-            <li><a style="background-color : rgb(85, 172, 238)" 
-                    href="https://twitter.com/achiengcindy" target="_blank" rel="noopener">t</a></li>
-            <li><a style="background-color: rgb(76, 174, 227)"
-                    href="https://ke.linkedin.com/in/achiengcindy" target="_blank" rel="noopener" >l</a></li>
-            <li><a style="background-color: rgb(76, 174, 227)"
-                    href="https://ke.linkedin.com/in/achiengcindy" target="_blank" rel="noopener" >l</a></li>
-        </ul>
-    <div class="copyright column text-center pt"> <a href="https:/achiengcindy.com/">Cindy Achieng</a> Copyright © 2017-2019.</div>
+<div id="footer_outer" class="inner-item elements-item-inner">
+        <div class="row">
+                        <nav role="navigation" class="column col-2">
+                                        <ul>
+                                    {% with flatpage_list as pages %}
+                                    {% for page in pages %}
+                                    <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                                    {% endfor %}
+                                    {% endwith %}
+                                    <li><a href="https://achiengcindy.com/sitemap.xml">sitemap</a></li>
+                                    <li> <a href='{% url "blog:post_feed" %}'>Subscribe to my RSS feed</a></li>
+                                </ul>
+                                </nav>
+                                <ul class="social-buttons column col-2">
+                                    <li><a style="background-color: #333" href="https://github.com/achiengcindy" target="_blank" rel="noopener" >g</a></li>
+                                    <li><a style="background-color : rgb(66, 101, 185)"
+                                            href="https://www.facebook.com/cindy.muga.1" target="_blank" rel="noopener" >f</a></li>
+                                    <li><a style="background-color : rgb(85, 172, 238)" 
+                                            href="https://twitter.com/achiengcindy" target="_blank" rel="noopener">t</a></li>
+                                    <li><a style="background-color: rgb(76, 174, 227)"
+                                            href="https://ke.linkedin.com/in/achiengcindy" target="_blank" rel="noopener" >l</a></li>
+                                    <li><a style="background-color: rgb(76, 174, 227)"
+                                            href="https://ke.linkedin.com/in/achiengcindy" target="_blank" rel="noopener" >l</a></li>
+                                </ul>
+        </div>
+
+    <div class="row copyright wrapper_center text-center pt"> <a href="https:/achiengcindy.com/">Cindy Achieng</a> Copyright © 2017-2019.</div>
+
+</div>
