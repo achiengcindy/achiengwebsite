@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load blog_tags %}
-{% block title %}Cindy Achieng Blog{% endblock %}
+{% block title %}Blog{% endblock %}
 {% block content %}
 
 
-<section class="topspace masonry">
+<section class="topspace masonry  elements-item-inner inner-item">
         
                         {% for post in posts %}
         <article class="brick mb">
@@ -12,7 +12,6 @@
                         <figure>{% include "tags/list_thumbnail.html" %}</figure>
                         <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
                 </header>
-                <div class=" elements-item-inner inner-item container">
                 <div id="post-excerpt"> {{ post.body|truncatewords:30|markdown }}</div>
                 <footer id="post-meta">
                         <div class="post-bottom-left text-left">
@@ -24,7 +23,6 @@
                                                 class="edgtf-btn-text">Read More</span> </a>
                         </div>
                 </footer>
-        </div>
         </article>
         {% endfor %}
        
