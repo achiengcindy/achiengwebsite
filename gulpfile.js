@@ -44,32 +44,28 @@ function processImages() {
   return pipeline(
     gulp.src("./src/static/img/**/*"),
     responsive({
-      '*.jpg': [{
+      '*.png': [{
         width: 1080,
       height: 1080,
       gravity: 'Center',
-      ignoreAspectRatio:true,
       suffix: '-1080x1080'
     },
     {
       width: 1024,
     height: 1024,
     gravity: 'Center',
-    ignoreAspectRatio:true,
     suffix: '-1024x1024'
   },
 
       {
         width: 1000,
         height: 1000,
-        ignoreAspectRatio:true,
         suffix: '-992x992'
       },
 
       {
         width: 800,
         height: 800,
-        ignoreAspectRatio:true,
         suffix: '-800x800'
       },
 
@@ -81,7 +77,6 @@ function processImages() {
       {
         width: 650,
         height: 650,
-        ignoreAspectRatio:true,
         gravity: 'Center',
         suffix: '-650x650'
       },
@@ -98,6 +93,8 @@ function processImages() {
       }
       ]
     }),
+    imagemin(),
+    webp(),
     gulp.dest("./src/static/img/")
   );
 };
