@@ -39,62 +39,73 @@ function processHTML() {
   );
 };
 
+
+
 //process images
 function processImages() {
   return pipeline(
     gulp.src("./src/static/img/**/*"),
     responsive({
-      '*.png': [{
+      '*.jpg': [{
         width: 1080,
-      height: 1080,
-      gravity: 'Center',
+        quality: 90,
       suffix: '-1080x1080'
     },
     {
       width: 1024,
-    height: 1024,
-    gravity: 'Center',
+      quality: 90,
     suffix: '-1024x1024'
   },
 
       {
         width: 1000,
-        height: 1000,
+        quality: 90,
         suffix: '-992x992'
       },
 
       {
         width: 800,
-        height: 800,
+        quality: 90,
         suffix: '-800x800'
       },
 
       {
         width: 768,
         height: 768,
+        quality: 90,
         suffix: '-768x768'
       },
       {
         width: 650,
         height: 650,
-        gravity: 'Center',
+        crop: true,
         suffix: '-650x650'
       },
       {
         width: 500,
         height: 500,
         crop: true,
+        quality: 90,
         suffix: '-500x500'
       },
       {
         width: 350,
         height: 350,
+        crop: true,
+        quality: 90,
         suffix: '-350x350'
+      },
+      {
+        width: 320,
+        height: 320,
+        crop: true,
+        quality: 90,
+        suffix: '-320x320'
       }
       ]
     }),
     imagemin(),
-    webp(),
+    // webp(),
     gulp.dest("./src/static/img/")
   );
 };

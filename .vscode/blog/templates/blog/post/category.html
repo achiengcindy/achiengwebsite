@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load blog_tags %}
+{% block title %}{{ category.name }}{% endblock %}
+{% block content %}
+<div class="container topspace">
+        <h2>{{ category.name }}</h2>
+        {{ category.description }}
+        
+        {% endblock %}
+
+</div>
