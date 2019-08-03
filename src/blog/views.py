@@ -98,7 +98,7 @@ def post_detail(request, year, month, day, post):
     context = {'post': post, 'comments': comments, 'comment_form': comment_form, 'new_comment': new_comment, 'similar_posts': similar_posts,
                'meta_url': post.get_absolute_url, 'meta_image': post.image.url, 'meta_title': post.title, 'meta_description': meta_description, 'categories': categories}
     return render(request, 'blog/post/detail.html', context)
-
+  
 
 def dynamic_images(request):
     # https://stackoverflow.com/a/150518
@@ -119,3 +119,8 @@ def dynamic_images(request):
     cropped_example = original.crop((left, top, right, bottom))
 
     return HttpResponse(cropped_example.show(), content_type="image/png")
+
+
+def permalink(request,  id, slug):
+    post = get_object_or_404(Post,id=id,slug=slug)
+    return HttpResponseRedirect(post.get_absolute_url())

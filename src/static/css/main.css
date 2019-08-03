@@ -43,24 +43,24 @@ h1,h2,h3,h4,h5,h6{
     font-family:Montserrat;
     font-weight:700;
 }
+
 h1{
-    font-size:2.5em;
-    line-height:1em; 
+    font-size:2.5em; 
 }
 h2{
-    font-size:2em;
-    letter-spacing:-2px ;
+    font-size:2em 
 }
 h3{
-    font-size:1.5em;
-    line-height:1.4em; 
+    font-size:1.5em 
 }
 h4{
-    font-size:1.35em; 
+    font-size:1.35em 
 }
 h5{
+    font-size:1.2em; 
+}
+h6{
     font-size:1em;
-    line-height:1.579em; 
 }
 h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{
     color:inherit;
@@ -76,10 +76,7 @@ figure{
     padding:0;
     margin:0 ;
 }
-.related_posts ul,ul.social-buttons{
-    padding:0;
-    margin:0; 
-}
+
 code{
     font-size:14px; 
 }
@@ -94,11 +91,13 @@ code{
     background-color:#d92139;
     padding: 1.5em 5em;
 }
-.desc,.parallax h2,button a{
-    color:#fff;
-}
+
 .header-icons li,.menu-item,.padding li,.related_posts li,.related_posts ul,ul.header-icons,ul.menu-list{
     list-style:none 
+}
+.related_posts ul,ul.social-buttons{
+    padding:0;
+    margin:0; 
 }
 main{
     min-height:100%;
@@ -240,10 +239,11 @@ input{
 .section-title{
     text-align: center;
 }
+
 .hero{
     width:100%;
     position:relative;
-    background:url(/static/images/cindyettess-1080x1080.jpg) no-repeat center center;
+    background:url(/static/images/banner-1080x1080.jpg) no-repeat center center;
     background-color:#aec33a;
     height:500px;
     background-size:cover;
@@ -284,12 +284,12 @@ h1.desc{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.desc,.parallax h2,button a{
+    color:#fff;
+}
 .img-with-aniamtion-wrap{
     line-height: 0;
     margin-bottom: 0!important;
-}
-.desc, .parallax h2, button a {
-    color: #fff;
 }
 .img-with-aniamtion-wrap .inner {
     margin: 0!important;
@@ -297,8 +297,8 @@ h1.desc{
 img.img-with-animation{
     opacity: 0;
 }
-.inner, .custom{
-   width: 100%;
+.inner, .custom,.author-bio,.column,.tag-links{
+    width:100%
 }
 .admonition{
     position:relative;
@@ -459,9 +459,11 @@ img.img-with-animation{
     letter-spacing:2px 
 }
 
-.author-bio,.column,.detail-post,.tag-links,main{
-    width:100%
+.detail-post{
+        background-color: #fff;
+        padding: 0 1em;
 }
+
 #post-meta{
     display:table;
     width:100%;
@@ -482,9 +484,6 @@ img.img-with-animation{
 .avatar{
     float:left;
     width: 84px;
-}
-.detailed-image{
-    max-height: 400px;
 }
 table,td,th{
     border:1px solid #e1e1e1;
@@ -515,19 +514,38 @@ table,td,th{
 .social-buttons li,.tags{
     display:inline-block
 }
-.sidebar .aside-title{
-    font-size:14px;
-    text-transform:uppercase;
-    margin:21px 0
+
+.card-sidebar{
+    border : #fff solid 1px;
+    overflow : hidden;
+    padding: 1em;
+    background-color: #fff;
 }
-.sidebar ul{
+.card-sidebar:not(:last-child) {
+    margin : 0 0 30px;
+}
+.card-sidebar> h3 {
+    font-size : 14px;
+    text-transform : uppercase;
+    margin: 21px 0;
+}
+.card-sidebar ul {
+    padding : 0;
+    line-height : 18px;
+    font-size : 14px;
+}
+.card-sidebar a:hover{
+    color: #dadada;
+}
+.card-sidebar ul li {
+    list-style : none;
+    margin-bottom : 10px;
     padding:0;
     font-size:14px
 }
 .sidebar a:hover{
     color:#dadada
 }
-
 #footer{
     right:0;
     bottom:0;
@@ -543,6 +561,7 @@ table,td,th{
 #footer nav a{
     padding:.5em ;
 }
+
 @media only screen and (max-width:767px){
     #menu{
         display:block;
@@ -617,6 +636,7 @@ table,td,th{
     .custom{
         padding: 0 5% 10%;
    }
+
 }
 @media only screen and (max-width:500px){
     .header-icons{
@@ -659,12 +679,6 @@ table,td,th{
         display:-ms-flexbox;
         justify-content:center 
    }
-    .detail-post{
-        float:left 
-   }
-    .sidebar{
-        float:right 
-   }
     .col-3{
         width:33% ;
    }
@@ -691,20 +705,25 @@ table,td,th{
     .custom{
         padding-bottom: 1.5%;
    }
- .detail-post{
-        padding:0 3em;
-   }
+.detail-post{
+    padding:0 4em;
+    margin-right: 1em;
+    width: calc(100% - (30% + 1em));
+    background-color: #fff;
+}  
 
-   
+.sidebar{
+width: 30%;
+float: right;
+
+}
+
+
 }
 @media only screen and (min-width:992px){
     .container{
         max-width: 960px;
    }
-  .detail-post{
-        padding:0 4em 
-   }
-   
     .custom{
        padding: 0 5%;
    }

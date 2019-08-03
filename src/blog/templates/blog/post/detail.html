@@ -5,23 +5,12 @@
 
 
 {% block content %}
-<div class="coontainer topspace">
-        <article class="row elements-item-inner">
-                <div class="detail-post column col-5">
-                    <section class="single-post">
+<div class="container topspace">
+    <article class="row">
+        <div class="detail-post column">
+                <section class="single-post">
                         <header id="entry-header">
                             <h2>{{ post.title }}</h2>
-                            <figure class="">
-                                {% include "tags/detail_thumbnail.html" %}
-            
-            
-                                <figcaption class="single-caption text-center">
-                                    {% if post.credit %}{{ post.credit|markdown }}{% else%}
-                                    <a href="https://achiengcindy.com">Image By Cindy</a>{% endif %}
-            
-                                </figcaption>
-            
-                            </figure>
                             <span>published on:
                                 <a href="https://achiengcindy.com" rel="bookmark">
                                     <time class="entry-date date" pubdate=''>{{ post.publish }}</time>|
@@ -32,8 +21,6 @@
                             <span class="author vcard"><a class="url fn n"
                                     href="https://achiengcindy.com/aboutcindy/">{{ post.author }}</a></span>
                             <span class="cat-links">
-            
-            
                                 In categor{{ categories.count|pluralize:"y,ies" }}:
                                 {% for c in categories %}
                                 <a href="{{ c.get_absolute_url }}" rel="category tag">{{ c.title }}</a>
@@ -53,8 +40,6 @@
                                 {% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
-            
-            
                             <ul class="social-buttons mb">
                                 <li>
                                     <a style="background-color : #f26522;" target="_blank" class='share-email'
@@ -63,7 +48,6 @@
                                 <li>
                                     <a style="background-color : rgb(66, 101, 185)" target="_blank"
                                         href="https://www.facebook.com/sharer/sharer.php?u=http://achiengcindy.com{{post.get_absolute_url|urlencode}}">f</a>
-            
                                 </li>
                                 <li>
                                     <a style="background-color : rgb(85, 172, 238)" target="_blank"
@@ -75,7 +59,6 @@
                                         href="http://www.linkedin.com/shareArticle?url=http://achiengcindy.com{{post.get_absolute_url|urlencode}}&title={{post.title|urlencode}}&summary={{title}}&source=achiengcindy.com">
                                         l</a>
                                 </li>
-            
                             </ul>
                         </footer>
                     </section>
@@ -95,7 +78,6 @@
                             {% empty %} No Related post ☹ ,definately Check again soon! {% endfor %}
                         </ul>
                     </section>
-            
                     <!-- /.related_posts -->
                     <section class="author-bio mb">
                         <img class="avatar" src="{% static 'images/cindyavartars-100w.webp' %}"
@@ -103,7 +85,8 @@
                         <div class="author-description" style="padding-left:6em;">
                             <h3 class="author-name" style="margin-top:0;"><a href="https://achiengcindy.com"
                                     alt="{{ post.author }}">{{ post.author }}</a></h3>
-                            <p>I am a mobile-web developer highly skilled in django and Co-founder of Oark Limited a tech company
+                            <p>I am a mobile-web developer highly skilled in django and Co-founder of Oark Limited a tech
+                                company
                                 based in Nairobi Kenya.
                                 I love to share my coding journey with the world with the aim to teach ,learn and inspire.
                                 <a href="/aboutcindy/">More about Cindy</a>
@@ -111,46 +94,46 @@
                         </div>
                     </section>
                     <!--.author-bio-->
-            
+        
                     <!--     <section class="comments">
-                        {% with comments.count as total_comments %}
-                        <h3>{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
-                        {% endwith %}
-            
-                        {% for comment in comments %}
-            <div class="comment">
-            <p class="info">
-            Comment {{ forloop.counter }} by {{ comment.commenter }}
-            {{ comment.created }}
-            </p>
-            {{ comment.body|linebreaks }}
-            </div>
-            {% empty %}
-            <p>There are no comments yet.</p>
-            {% endfor %}
-            
-            {% if new_comment %}
-            <h2>Your comment has been added.</h2>{% else %}
-            <h2>Add a new comment</h2>
-            <form action="." method="post">
-            {{ comment_form.as_p }}
-            {% csrf_token %}
-            <button type="submit">Post Comment</button>
-            </form>
-            {% endif %}
-                </section> -->
+                                        {% with comments.count as total_comments %}
+                                        <h3>{{ total_comments }} comment{{ total_comments|pluralize }}</h3>
+                                        {% endwith %}
+                            
+                                        {% for comment in comments %}
+                            <div class="comment">
+                            <p class="info">
+                            Comment {{ forloop.counter }} by {{ comment.commenter }}
+                            {{ comment.created }}
+                            </p>
+                            {{ comment.body|linebreaks }}
+                            </div>
+                            {% empty %}
+                            <p>There are no comments yet.</p>
+                            {% endfor %}
+                            
+                            {% if new_comment %}
+                            <h2>Your comment has been added.</h2>{% else %}
+                            <h2>Add a new comment</h2>
+                            <form action="." method="post">
+                            {{ comment_form.as_p }}
+                            {% csrf_token %}
+                            <button type="submit">Post Comment</button>
+                            </form>
+                            {% endif %}
+                                </section> -->
                     <section class="comments-area">
                         <div id="disqus_thread"></div>
                         <script>
                             /**
                              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
                              *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-            
+        
                             var disqus_config = function () {
                                 this.page.url = "https://achiengcindy.com/{{post.get_absolute_url}}"; // Replace PAGE_URL with your page's canonical URL variable
                                 this.page.identifier = "{{post.id}}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                             };
-            
+        
                             (function () { // DON'T EDIT BELOW THIS LINE
                                 var d = document,
                                     s = d.createElement('script');
@@ -161,22 +144,28 @@
                         </script>
                         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments
                                 powered by Disqus.</a></noscript>
-            
                     </section>
-                </div>
-                <aside class="sidebar column col-6">
-                    <h3>Trending <span>🔥</span> Post</h3>
-                    {% get_most_commented_posts as most_commented_posts %}
-                    <ul>
-                        {% for post in most_commented_posts %}
-                        <li>
-                            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </aside>
-            </article>
+            
+        </div>
+        <aside class="sidebar column">
+            <div class="card-sidebar">
+                <h3>Trending <span>🔥</span> Post</h3>
+                {% get_most_commented_posts as most_commented_posts %}
+                <ul>
+                    {% for post in most_commented_posts %}
+                    <li>
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-sidebar">
+                <h3>categories</h3>
+            </div>
+            <div class="card-sidebar">
+                <h3>resources</h3>
+            </div>
+        </aside>
+    </article>
 </div>
-
-
 {% endblock %}

@@ -69,12 +69,16 @@ class Post(models.Model):
         verbose_name = 'post'
         verbose_name_plural = 'posts'
         ordering = ('-publish',)
+        # index_together = (('id', 'slug'),)
 
     def __str__(self):
         return self.title
     
     def get_absolute_url(self):
         return reverse('blog:post_detail', args=[self.publish.year,self.publish.strftime('%m'),self.publish.strftime('%d'),self.slug]) 
+
+    def get_permalink_url(self):
+        return reverse('permalink', args=[self.id,self.slug,])
 
 
 class Comment(models.Model):

@@ -18,3 +18,5 @@ src/mysite/settings\.py
 src/\.env
 
 *.sqlite3
+
+optimized images/
